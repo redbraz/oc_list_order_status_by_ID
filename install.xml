@@ -27,6 +27,10 @@
 				<search><![CDATA[<td class="text-left">{{ order_status.name }}</td>]]></search>
 				<add position="before"><![CDATA[<td class="text-center">{{ order_status.order_status_id }}</td>]]></add>
 			</operation>
+			<operation>
+				<search><![CDATA[<td class="text-center" colspan="3">]]></search>
+				<add position="replace"><![CDATA[<td class="text-center" colspan="4">]]></add>
+			</operation>
 		</file>
 
 </modification>
