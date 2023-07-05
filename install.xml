@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+  <name><![CDATA[List order status by ID]]></name>
+  <code><![CDATA[prai_list_order_status_id]]></code>
+	<version><![CDATA[1.0]]></version>
+	<author><![CDATA[REDS PRAI]]></author>
+	<link><![CDATA[https://www.agenciaprai.com/]]></link>
+		
+    <file path="admin/controller/localisation/order_status.php" error="skip">
+			<operation>
+				<search><![CDATA[$sort = 'name';]]></search>
+				<add position="replace"><![CDATA[$sort = 'order_status_id';]]></add>
+			</operation>
+    </file>
+		<file path="admin/model/localisation/order_status.php" error="skip">
+			<operation>
+				<search><![CDATA[$sql .= " ORDER BY name";]]></search>
+				<add position="replace"><![CDATA[$sql .= " ORDER BY order_status_id";]]></add>
+			</operation>
+		</file>
+		<file path="admin/view/template/localisation/order_status_list.twig" error="skip">
+			<operation>
+				<search><![CDATA[<td class="text-left">{% if sort == 'name' %}]]></search>
+				<add position="before"><![CDATA[<td class="text-center">ID</td>]]></add>
+			</operation>
+			<operation>
+				<search><![CDATA[<td class="text-left">{{ order_status.name }}</td>]]></search>
+				<add position="before"><![CDATA[<td class="text-center">{{ order_status.order_status_id }}</td>]]></add>
+			</operation>
+		</file>
+
+</modification>
